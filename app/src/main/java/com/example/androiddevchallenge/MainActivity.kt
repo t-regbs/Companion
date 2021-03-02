@@ -19,11 +19,15 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navArgument
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.extension.getPuppyIdArgument
+import com.example.androiddevchallenge.ui.screens.PuppyDetailScreen
 import com.example.androiddevchallenge.ui.screens.PuppyListScreen
 import com.example.androiddevchallenge.ui.theme.CompanionTheme
 
@@ -33,19 +37,36 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CompanionTheme {
-                PuppyListScreen()
-//                val puppy = PuppiesProvider.randomPuppy()
-//                PuppyCard(puppy = puppy) { }
+                BuildNavGraph()
             }
         }
     }
 }
 
-// Start building your app here!
+@ExperimentalFoundationApi
 @Composable
-fun MyApp() {
-    Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Ready... Set... GO!")
+private fun BuildNavGraph() {
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = Navigation.NAV_PUPPY_LIST
+    ) {
+        composable(route = Navigation.NAV_PUPPY_LIST) {
+            PuppyListScreen(navController = navController)
+        }
+        composable(
+            route = Navigation.NAV_PUPPY_DETAIL,
+            arguments = listOf(
+                navArgument(Navigation.NAV_PUPPY_DETAIL_ARGUMENT) {
+                    type = NavType.IntType
+                }
+            )
+        ) {
+            PuppyDetailScreen(
+                navController = navController,
+                puppyId = it.getPuppyIdArgument(Navigation.NAV_PUPPY_DETAIL_ARGUMENT)
+            )
+        }
     }
 }
 
@@ -53,7 +74,7 @@ fun MyApp() {
 @Composable
 fun LightPreview() {
     CompanionTheme {
-        MyApp()
+//        MyApp()
     }
 }
 
@@ -61,6 +82,6 @@ fun LightPreview() {
 @Composable
 fun DarkPreview() {
     CompanionTheme(darkTheme = true) {
-        MyApp()
+//        MyApp()
     }
 }

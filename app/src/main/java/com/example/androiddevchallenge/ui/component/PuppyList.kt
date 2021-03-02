@@ -13,6 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
+import com.example.androiddevchallenge.Navigation
 import com.example.androiddevchallenge.data.PuppiesProvider
 import com.example.androiddevchallenge.ui.model.Puppy
 import com.example.androiddevchallenge.ui.theme.CompanionTheme
@@ -20,7 +24,8 @@ import com.example.androiddevchallenge.ui.theme.CompanionTheme
 @ExperimentalFoundationApi
 @Composable
 fun PuppyList(
-    puppies: List<Puppy>
+    puppies: List<Puppy>,
+    navController: NavHostController
 ) {
     Surface(
         Modifier
@@ -38,7 +43,13 @@ fun PuppyList(
                     } else {
                         Modifier.padding(8.dp)
                     }
-                    PuppyCard(modifier = modifier, puppy = puppy, onClick = { })
+                    PuppyCard(
+                        modifier = modifier,
+                        puppy = puppy,
+                        onClick = {
+                            navController.navigate(Navigation.buildPuppyDetailPath(puppyId = puppy.id))
+                        }
+                    )
                 }
             }
         )
@@ -51,7 +62,8 @@ fun PuppyList(
 fun PetsListPreview() {
     CompanionTheme {
         PuppyList(
-            PuppiesProvider.getAllPuppies()
+            PuppiesProvider.getAllPuppies(),
+            rememberNavController()
         )
     }
 }

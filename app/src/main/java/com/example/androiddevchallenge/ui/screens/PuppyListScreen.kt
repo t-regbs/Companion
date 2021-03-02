@@ -18,6 +18,7 @@ package com.example.androiddevchallenge.ui.screens
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import com.example.androiddevchallenge.data.PuppiesProvider
 import com.example.androiddevchallenge.ui.component.PuppyList
 import com.example.androiddevchallenge.ui.component.SearchAppBar
@@ -25,7 +26,7 @@ import com.example.androiddevchallenge.ui.model.Breed
 
 @ExperimentalFoundationApi
 @Composable
-fun PuppyListScreen() {
+fun PuppyListScreen(navController: NavHostController) {
     Scaffold(
         topBar = {
             SearchAppBar(
@@ -43,7 +44,8 @@ fun PuppyListScreen() {
         }
     ) {
         PuppyList(
-            puppies = PuppiesProvider.getAllPuppies()
+            puppies = PuppiesProvider.getAllPuppies(),
+            navController
         )
     }
 }
