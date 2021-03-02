@@ -16,7 +16,7 @@
 package com.example.androiddevchallenge.ui.model
 
 data class Pet(
-    val id: Int,
+    val id: PetId,
     val name: String,
     val icon: Int
 )
