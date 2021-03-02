@@ -16,7 +16,11 @@
 package com.example.androiddevchallenge.data
 
 import com.example.androiddevchallenge.R
-import com.example.androiddevchallenge.ui.model.*
+import com.example.androiddevchallenge.ui.model.Breed
+import com.example.androiddevchallenge.ui.model.Gender
+import com.example.androiddevchallenge.ui.model.Pet
+import com.example.androiddevchallenge.ui.model.PetId
+import com.example.androiddevchallenge.ui.model.Puppy
 
 object PuppiesProvider {
     val breeds = mutableListOf(
