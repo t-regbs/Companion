@@ -19,7 +19,7 @@ import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.model.*
 
 object PuppiesProvider {
-    private val breeds = listOf(
+    val breeds = mutableListOf(
         Breed(
             breedId = 1,
             name = "Terrier",
@@ -46,7 +46,7 @@ object PuppiesProvider {
         Puppy(
             id = 1,
             name = "Titi",
-            image = "https://images.dog.ceo/breeds/terrier-american/n02093428_10947.jpg",
+            image = R.drawable.titi,
             gender = Gender.FEMALE,
             breed = breeds[0],
             age = 9,
@@ -55,7 +55,7 @@ object PuppiesProvider {
         Puppy(
             id = 2,
             name = "Oba",
-            image = "https://images.dog.ceo/breeds/chihuahua/n02085620_13151.jpg",
+            image = R.drawable.oba,
             gender = Gender.MALE,
             breed = breeds[2],
             age = 2,
@@ -64,7 +64,7 @@ object PuppiesProvider {
         Puppy(
             id = 3,
             name = "Tunji",
-            image = "https://images.dog.ceo/breeds/affenpinscher/n02110627_12003.jpg",
+            image = R.drawable.tunji,
             gender = Gender.MALE,
             breed = breeds[3],
             age = 4,
@@ -73,7 +73,7 @@ object PuppiesProvider {
         Puppy(
             id = 4,
             name = "Motun",
-            image = "https://images.dog.ceo/breeds/shiba/shiba-14.jpg",
+            image = R.drawable.motun,
             gender = Gender.FEMALE,
             breed = breeds[4],
             age = 1,
@@ -82,7 +82,7 @@ object PuppiesProvider {
         Puppy(
             id = 5,
             name = "Ayo",
-            image = "https://images.dog.ceo/breeds/lhasa/n02098413_11048.jpg",
+            image = R.drawable.ayo,
             gender = Gender.FEMALE,
             breed = breeds[1],
             age = 1,
@@ -91,7 +91,7 @@ object PuppiesProvider {
         Puppy(
             id = 6,
             name = "Femi",
-            image = "https://images.dog.ceo/breeds/chihuahua/n02085620_3407.jpg",
+            image = R.drawable.femi,
             gender = Gender.MALE,
             breed = breeds[2],
             age = 3,
@@ -100,7 +100,7 @@ object PuppiesProvider {
         Puppy(
             id = 7,
             name = "Bolaji",
-            image = "https://images.dog.ceo/breeds/terrier-american/n02093428_3061.jpg",
+            image = R.drawable.bolaji,
             gender = Gender.MALE,
             breed = breeds[0],
             age = 4,
@@ -109,7 +109,7 @@ object PuppiesProvider {
         Puppy(
             id = 8,
             name = "Olamide",
-            image = "https://images.dog.ceo/breeds/shiba/shiba-9.jpg",
+            image = R.drawable.olamide,
             gender = Gender.MALE,
             breed = breeds[4],
             age = 2,
@@ -142,7 +142,7 @@ object PuppiesProvider {
 
     fun getAllPuppies(): List<Puppy> = puppies
 
-//    fun randomPuppy(): Puppy = puppies.random()
+    fun randomPuppy(): Puppy = puppies.random()
 
     fun getAllPets(): List<Pet> = petTypes
 

@@ -18,7 +18,7 @@ package com.example.androiddevchallenge.ui.model
 data class Puppy(
     val id: Int,
     val name: String,
-    val image: String? = null,
+    val image: Int? = null,
     val gender: Gender,
     val breed: Breed,
     val age: Int,
